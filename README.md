@@ -3,7 +3,7 @@
 Rank collapse is a common failure mode in fast teacher self distilation, such as pooled joint embedding predictive archectures with no ema teacher. This simple method can be useful.
 
 ```python
-def rankreg(x, eps=1e-7):
+def rankreg(x, max_possible_rank, eps=1e-7):
     """
     Encourages maximal rank.    
     Args:
@@ -27,8 +27,6 @@ def rankreg(x, eps=1e-7):
     # Normalize embeddings
     x = F.layer_norm(x, (embed_dim,))
     
-    # Maximum possible rank is min(batch_size, embed_dim)
-    max_possible_rank = min(batch_size, embed_dim)
     
     # Compute rank
     s = torch.linalg.svdvals(x)
