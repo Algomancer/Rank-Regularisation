@@ -25,10 +25,6 @@ def rankreg(x, max_possible_rank, eps=1e-7):
     else:
         batch_size, embed_dim = x.shape
     
-    # Normalize embeddings
-    x = F.layer_norm(x, (embed_dim,))
-    
-    
     # Compute rank
     s = torch.linalg.svdvals(x)
     s_norm = s.norm(1)
