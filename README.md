@@ -8,6 +8,7 @@ def rankreg(x, max_possible_rank, eps=1e-7):
     Encourages maximal rank.    
     Args:
         x: Representations, shape: (batch, embed) or (batch, seq_len, embed)
+        max_possible_rank: For normalisation
         eps: Small constant for numerical stability
     
     Returns:
